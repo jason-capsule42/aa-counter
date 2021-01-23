@@ -58,12 +58,16 @@ class AuroCounter extends LitElement {
           -
         </auro-button>
         ${this.currentValue}
-        <auro-button>
+        <auro-button @click="${this.increment}">
           +
         </auro-button>
         <slot></slot>
       </div>
     `;
+  }
+
+  increment() {
+    this.currentValue += 1;
   }
 }
 
