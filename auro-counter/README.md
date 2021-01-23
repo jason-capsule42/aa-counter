@@ -39,7 +39,7 @@ import "@alaskaairux/auro-counter";
 **Reference component in HTML**
 
 ```html
-<auro-counter>Hello World</auro-counter>
+<auro-counter></auro-counter>
 ```
 
 ## Install bundled assets from CDN
@@ -71,7 +71,7 @@ The `<auro-counter>` element should be used in situations where users may:
 Default auro-counter
 
 ```html
-<auro-counter>Hello World</auro-counter>
+<auro-counter></auro-counter>
 ```
 
 ## Development

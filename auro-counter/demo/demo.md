@@ -20,14 +20,24 @@ The `auro-counter` element should be used in situations where users may:
 |||√|√|
 
 <div class="exampleWrapper">
-  <auro-counter cssClass="testClass">Hello World!</auro-counter>
+  <auro-counter
+    cssClass="testClass"
+    currentValue="12"
+    minValue="0"
+    maxValue="100">
+  </auro-counter>
 </div>
 
 <auro-accordion lowProfile justifyRight>
   <span slot="trigger">See code</span>
 
   ```html
-  <auro-counter cssClass="testClass">Hello World!</auro-counter>
+    <auro-counter
+      cssClass="testClass"
+      currentValue="12"
+      minValue="0"
+      maxValue="100">
+    </auro-counter>
   ```
 
 </auro-accordion>

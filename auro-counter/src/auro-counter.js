@@ -25,15 +25,19 @@ import styleCss from "./style-css.js";
 
 // build the component class
 class AuroCounter extends LitElement {
-  // constructor() {
-  //   super();
-  // }
+  constructor() {
+    super();
+    this.currentValue = 0;
+  }
 
   // function to define props used within the scope of this component
   static get properties() {
     return {
       // ...super.properties,
-      cssClass:   { type: String }
+      cssClass:   { type: String },
+      minValue: {type: Number},
+      maxValue: {type: Number},
+      currentValue: {type: Number}
     };
   }
 
@@ -50,9 +54,10 @@ class AuroCounter extends LitElement {
   render() {
     return html`
       <div class=${this.cssClass}>
-        <auro-button>
+        <auro-button disabled>
           -
         </auro-button>
+        ${this.currentValue}
         <auro-button>
           +
         </auro-button>
