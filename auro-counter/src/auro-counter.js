@@ -5,6 +5,7 @@
 
 // If use litElement base class
 import { LitElement, html, css } from "lit-element";
+import "@alaskaairux/auro-button";
 
 // If using auroElement base class
 // See instructions for importing auroElement base class https://git.io/JULq4
@@ -49,6 +50,12 @@ class AuroCounter extends LitElement {
   render() {
     return html`
       <div class=${this.cssClass}>
+        <auro-button>
+          -
+        </auro-button>
+        <auro-button>
+          +
+        </auro-button>
         <slot></slot>
       </div>
     `;
