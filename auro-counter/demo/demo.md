@@ -22,9 +22,11 @@ The `auro-counter` element should be used in situations where users may:
 <div class="exampleWrapper">
   <auro-counter
     cssClass="testClass"
-    currentValue="12"
+    currentValue="0"
     minValue="0"
-    maxValue="100">
+    maxValue="10"
+    udKeys
+    lrKeys>
   </auro-counter>
 </div>
 
@@ -34,9 +36,11 @@ The `auro-counter` element should be used in situations where users may:
   ```html
     <auro-counter
       cssClass="testClass"
-      currentValue="12"
+      currentValue="0"
       minValue="0"
-      maxValue="100">
+      maxValue="10"
+      udKeys
+      lrKeys>
     </auro-counter>
   ```
 

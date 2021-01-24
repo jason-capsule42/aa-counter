@@ -30,6 +30,8 @@ class AuroCounter extends LitElement {
     this.currentValue = 0;
     this.minValue = null;
     this.maxValue = null;
+    this.udKeys = false;
+    this.lrKeys = false;
   }
 
   // function to define props used within the scope of this component
@@ -37,9 +39,13 @@ class AuroCounter extends LitElement {
     return {
       // ...super.properties,
       cssClass:   { type: String },
-      minValue: {type: Number},
-      maxValue: {type: Number},
-      currentValue: {type: Number}
+      currentValue: { type: Number },
+      minValue: { type: Number },
+      maxValue: { type: Number },
+      // Up & Down arrow key support
+      udKeys: { type: Boolean },
+      // Left & Right arrow key support
+      lrKeys: { type: Boolean }
     };
   }
 
@@ -58,13 +64,15 @@ class AuroCounter extends LitElement {
       <div class=${this.cssClass}>
         <auro-button
           ?disabled="${this.currentValue === this.minValue}"
-          @click="${this.decrement}">
+          @click="${this.decrement}"
+        >
           -
         </auro-button>
         ${this.currentValue}
         <auro-button
-        ?disabled="${this.currentValue === this.maxValue}"
-        @click="${this.increment}">
+          ?disabled="${this.currentValue === this.maxValue}"
+          @click="${this.increment}"
+        >
           +
         </auro-button>
         <slot></slot>
@@ -73,14 +81,50 @@ class AuroCounter extends LitElement {
   }
 
   decrement() {
-    if (!this.minValue || this.currentValue > this.minValue) {
+    if (this.minValue !== null && this.currentValue > this.minValue) {
       this.currentValue -= 1;
     }
   }
 
   increment() {
-    if (!this.maxValue || this.currentValue < this.maxValue) {
+    if (this.maxValue !== null && this.currentValue < this.maxValue) {
       this.currentValue += 1;
+    }
+  }
+
+  handleArrowKey(key) {
+    if (key === 'ArrowUp' || key === 'ArrowRight') {
+      this.increment();
+    }
+
+    if (key === 'ArrowDown' || key === 'ArrowLeft') {
+      this.decrement();
+    }
+  }
+
+  firstUpdated() {
+    // Monitor keyboard events only if we need to
+    if (this.udKeys || this.lrKeys) {
+      window.addEventListener("keydown", (event) => {
+        // Process only arrow keys
+        const minIndex = 0;
+
+        if ([
+          'ArrowUp',
+          'ArrowDown'
+        ].indexOf(event.key) >= minIndex && this.udKeys) {
+          event.preventDefault();
+          this.handleArrowKey(event.key);
+        }
+
+        if ([
+          'ArrowLeft',
+          'ArrowRight'
+        ].indexOf(event.key) >= minIndex && this.lrKeys) {
+          event.preventDefault();
+          this.handleArrowKey(event.key);
+        }
+      });
     }
   }
 
@@ -93,9 +137,9 @@ class AuroCounter extends LitElement {
         constrain the bounds (e.g. don't add more to a shopping cart
         than items that exist in inventory))
     2. Enable keyboard support
-      a. Up/Down arrow keys make sense
-      b. Perhaps enable left/right arrow keys optional
-      c. in practice should keyboard events only happen based on state?
+      a. COMPLETE Up/Down arrow keys make sense
+      b. COMPLETE Perhaps enable left/right arrow keys optional
+      c. COMPLETE in practice should keyboard events only happen based on state?
         e.g. perhaps the count is actually in a input or other focusable
         element. Then have arrow keys increment only while the count has focus.
         This would likely be necessary to account of keyboard navigation of
@@ -107,7 +151,7 @@ class AuroCounter extends LitElement {
         and without good framing the content to the right of the current
         value (the button in this particular case) would jump as the
         current value changes.
-      f. Since I support passing in a custom starting value I need to
+      f. COMPLETE Since I support passing in a custom starting value I need to
         also make sure that the custom value is within the bounds of
         the minValue and maxValue if they exist. Implementation question
         would be if outside the bounds, what do we do? e.g. min 1 max 10
