@@ -60,10 +60,10 @@ Since the legacy bundle includes many polyfills that are not needed by modern br
 
 ## auro-counter use cases
 
-The `auto-counter` component renders a basic numerical counter which can be manually increased and decreased by clicking on + and - buttons. Optionally, the component also supports value changes using the keyboard arrow keys. Minimum and maximum values are also supported which can be used in combination to constrain upper and lower bounds.
+The `auro-counter` component renders a basic numerical counter which can be manually increased and decreased by clicking on + and - buttons. Optionally, the component also supports value changes using the keyboard arrow keys. Minimum and maximum values are also supported which can be used in combination to constrain upper and lower bounds.
 ## Optional Parameters
 
-`auto-counter` supports multiple parameters to control interaction and constraints.
+`auro-counter` supports multiple parameters to control interaction and constraints.
 ### Setting the values and constraints of the counter
 
 * `currentValue` Start the counter at a given integer value; defaults to 0
