@@ -60,20 +60,40 @@ Since the legacy bundle includes many polyfills that are not needed by modern br
 
 ## auro-counter use cases
 
-The `<auro-counter>` element should be used in situations where users may:
+The `auto-counter` component renders a basic numerical counter which can be manually increased and decreased by clicking on + and - buttons. Optionally, the component also supports value changes using the keyboard arrow keys. Minimum and maximum values are also supported which can be used in combination to constrain upper and lower bounds.
+## Optional Parameters
 
-* ...
-* ...
-* ...
+`auto-counter` supports multiple parameters to control interaction and constraints.
+### Setting the values and constraints of the counter
 
+* `currentValue` Start the counter at a given integer value; defaults to 0
+* `minValue` Set the lower boundary as an integer value, null value has no lower boundary; defaults to null
+* `maxValue` Set the upper boundary as an integer value, null value has no upper boundary; defaults to null
+### Defining keyboard controls
+
+Default web client behavior is to scroll the page content when pressing the keyboard arrow keys. Optionally, the `auro-counter` component can override the behavior and use those keys to control the counter.
+
+* `udKeys` Short for "up down Keys". When included the up arrow key will increase the counter value by 1 and the down arrow key will decrease the value by 1.
+* `lrKeys` Short for "left right Keys". When included the right arrow key will increase the counter value by 1 and the left arrow key will decrease the value by 1.
 ## API Code Examples
 
-Default auro-counter
+Default `auro-counter`
 
 ```html
 <auro-counter></auro-counter>
 ```
 
+`auro-counter` with all options in use
+
+```html
+<auro-counter
+    currentValue="0"
+    minValue="0"
+    maxValue="10"
+    udKeys
+    lrKeys>
+</auro-counter>
+```
 ## Development
 
 In order to develop against this project, if you are not part of the core team, you will be required to fork the project prior to submitting a pull request.

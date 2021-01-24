@@ -1,27 +1,26 @@
 # auro-counter
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis in tellus nec pellentesque. Integer bibendum ligula sit amet vehicula gravida. Maecenas accumsan, ligula vitae molestie iaculis, tellus mi laoreet ex [install instructions](https://auro.alaskaair.com/components/auro/button/install), ac malesuada velit dolor vel mi. Cras et rutrum urna. Sed mattis mi eu tortor ullamcorper, egestas bibendum mauris cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra eros eget neque commodo vulputate. In tempus eu velit at dictum.
+The `auto-counter` component renders a basic numerical counter which can be manually increased and decreased by clicking on + and - buttons. Optionally, the component also supports value changes using the keyboard arrow keys. Minimum and maximum values are also supported which can be used in combination to constrain upper and lower bounds.
 
-Nulla at augue facilisis `odio lobortis` molestie vitae a nulla.
+Illustrated in this example is a stand-alone use of `auto-counter`.
+## Optional Parameters
 
-## auro-counter use cases
+`auto-counter` supports multiple parameters to control interaction and constraints.
+### Setting the values and constraints of the counter
 
-The `auro-counter` element should be used in situations where users may:
+* `currentValue` Start the counter at a given integer value; defaults to 0
+* `minValue` Set the lower boundary as an integer value, null value has no lower boundary; defaults to null
+* `maxValue` Set the upper boundary as an integer value, null value has no upper boundary; defaults to null
 
-* egestas bibendum mauris cursus
-* quis euismod felis mollis
-* consectetur ipsum risus sed tortor
+### Defining keyboard controls
 
-> Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam fermentum libero ipsum, ac tempor sapien blandit in. Nam tincidunt non felis molestie varius.
+Default web client behavior is to scroll the page content when pressing the keyboard arrow keys. Optionally, the `auro-counter` component can override the behavior and use those keys to control the counter.
 
-|convallis|tristique|nisl dignissim|eleifend|
-|---|---|---|---|
-|√|√|||
-|||√|√|
+* `udKeys` Short for "up down Keys". When included the up arrow key will increase the counter value by 1 and the down arrow key will decrease the value by 1.
+* `lrKeys` Short for "left right Keys". When included the right arrow key will increase the counter value by 1 and the left arrow key will decrease the value by 1.
 
 <div class="exampleWrapper">
   <auro-counter
-    cssClass="testClass"
     currentValue="0"
     minValue="0"
     maxValue="10"
@@ -35,7 +34,6 @@ The `auro-counter` element should be used in situations where users may:
 
   ```html
     <auro-counter
-      cssClass="testClass"
       currentValue="0"
       minValue="0"
       maxValue="10"
@@ -45,26 +43,3 @@ The `auro-counter` element should be used in situations where users may:
   ```
 
 </auro-accordion>
-
-## Then there is more
-
-Aenean at blandit lorem. Fusce imperdiet mi nec gravida maximus. Quisque nisl libero, condimentum in nisi a, imperdiet lacinia arcu.
-
-```javascript
-toggleDialog = (elName) => {
-  let dialog = document.querySelector(elName);
-  const html = document.querySelector('html');
-
-  html.style.overflow = 'hidden';
-  dialog.removeAttribute("open");
-  dialog.setAttribute("open", true);
-}
-
-toggleDialogClose = (elName) => {
-  let dialog = document.querySelector(elName);
-  const html = document.querySelector('html');
-
-  html.style.overflow = '';
-  dialog.removeAttribute("open");
-}
-```
